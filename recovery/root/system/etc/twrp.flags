@@ -1,10 +1,10 @@
 # mount point	fstype	device	device2						flags
-/product       ext4 /dev/block/platform/13500000.dwmmc0/by-name/product  flags=backup=1;wipeingui;display="Product"
-/product_image emmc /dev/block/platform/13500000.dwmmc0/by-name/product  flags=backup=1;flashimg;display="Product Image"
+#/product       ext4 /dev/block/platform/13500000.dwmmc0/by-name/product  flags=backup=1;wipeingui;display="Product"
+#/product_image emmc /dev/block/platform/13500000.dwmmc0/by-name/product  flags=backup=1;flashimg;display="Product Image"
 /system_root   ext4 /dev/block/platform/13500000.dwmmc0/by-name/system  flags=backup=1;wipeingui;display="System"
-/system_image  emmc /dev/block/platform/13500000.dwmmc0/by-name/system  flags=backup=1;flashimg;display="System Image"
-/vendor        ext4 /dev/block/platform/13500000.dwmmc0/by-name/vendor  flags=backup=1;wipeingui;display="Vendor"
-/vendor_image  emmc /dev/block/platform/13500000.dwmmc0/by-name/vendor  flags=backup=1;flashimg;display="Vendor Image"
+#/system_image  emmc /dev/block/platform/13500000.dwmmc0/by-name/system  flags=backup=1;flashimg;display="System Image"
+#/vendor        ext4 /dev/block/platform/13500000.dwmmc0/by-name/vendor  flags=backup=1;wipeingui;display="Vendor"
+#/vendor_image  emmc /dev/block/platform/13500000.dwmmc0/by-name/vendor  flags=backup=1;flashimg;display="Vendor Image"
 
 /boot		emmc	/dev/block/platform/13500000.dwmmc0/by-name/boot	flags=backup=1;display="Boot"
 /recovery	emmc	/dev/block/platform/13500000.dwmmc0/by-name/recovery	flags=backup=1;display="Recovery"
@@ -23,3 +23,9 @@
 # Removable storage
 /external_sd	vfat	/dev/block/mmcblk1p1	/dev/block/mmcblk1		flags=storage;wipeingui;removable
 /usb-otg	vfat	/dev/block/sda1	/dev/block/sda				flags=display="USB-OTG";storage;wipeingui;removable
+#
+system					/system		ext4	ro,barrier=1			wait,logical,first_stage_mount
+vendor					/vendor		ext4	ro,barrier=1			wait,logical,first_stage_mount
+product					/product	ext4	ro,barrier=1			wait,logical,first_stage_mount
+system_ext					/system_ext		ext4	ro,barrier=1			wait,logical,first_stage_mount
+odm					/odm		ext4	ro,barrier=1			wait,logical,first_stage_mount
